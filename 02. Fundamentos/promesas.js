@@ -48,15 +48,12 @@ let getSalario = (empleado) =>{
     });
 };
 
-getEmpleado(1).then(empleado =>{
-    console.log('Empleado de BD', empleado);
-
-    getSalario(empleado).then(respuesta =>{
-        console.log(`El empleado ${respuesta.nombre}, tiene un salario de ${respuesta.salario}`);
-    }, (err) =>{
-        console.log(err);
+getEmpleado(2).then(empleado =>{
+    return getSalario(empleado);
     })
-
-}, (err)=>{
-    console.log(err);
-})
+    .then(respuesta => {
+        console.log(`El saladio de ${respuesta.nombre}, es de ${respuesta.salario}`);
+    })
+    .catch(err => {
+        console.log(err)
+    })
